@@ -1,0 +1,117 @@
+<template>
+  <div class="max-w-6xl mx-auto px-6 py-12">
+
+    <!-- Título -->
+    <div class="flex items-baseline justify-between mb-2 pb-4 border-b-2 border-teal">
+      <h1 class="font-display text-3xl font-bold text-teal uppercase tracking-tight">Notícias</h1>
+      <span class="text-sm text-muted">{{ filtradas.length }} resultados</span>
+    </div>
+
+    <!-- Filtros + busca -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mt-6 mb-8">
+      <!-- Chips de categoria -->
+      <div class="flex flex-wrap gap-2">
+        <button
+          v-for="cat in categorias"
+          :key="cat"
+          @click="selecionarCategoria(cat)"
+          :class="[
+            'text-xs font-semibold uppercase tracking-wide px-4 py-2 rounded-full border transition-colors',
+            categoriaAtiva === cat
+              ? 'bg-teal text-white border-teal'
+              : 'text-mid border-cultborder hover:border-teal hover:text-teal'
+          ]"
+        >
+          {{ cat }}
+        </button>
+      </div>
+
+      <!-- Busca -->
+      <div class="relative flex-shrink-0 md:w-64">
+        <input
+          v-model="busca"
+          @input="page = 1"
+          type="text"
+          placeholder="Buscar notícias..."
+          class="w-full text-sm border border-cultborder rounded-lg pl-10 pr-4 py-2.5 focus:border-teal focus:outline-none transition-colors"
+        />
+        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-muted text-lg">⌕</span>
+      </div>
+    </div>
+
+    <!-- Lista -->
+    <div v-if="paginadas.length" class="flex flex-col gap-5">
+      <NoticiaCard
+        v-for="noticia in paginadas"
+        :key="noticia.id"
+        :noticia="noticia"
+      />
+    </div>
+
+    <!-- Estado vazio -->
+    <div v-else class="text-center py-20">
+      <p class="text-muted text-lg">Nenhuma notícia encontrada.</p>
+      <button @click="limparFiltros" class="mt-4 text-teal text-sm font-semibold hover:underline">
+        Limpar filtros
+      </button>
+    </div>
+
+    <!-- Paginação -->
+    <div v-if="totalPages > 1" class="mt-12">
+      <PaginationNav
+        :current="page"
+        :total-pages="totalPages"
+        @update:page="irParaPagina"
+      />
+    </div>
+
+  </div>
+</template>
+
+<script setup>
+import { ref, computed } from 'vue'
+import { todasNoticias, categorias } from '@/composables/useNoticias.js'
+import NoticiaCard from '@/components/noticias/NoticiaCard.vue'
+import PaginationNav from '@/components/ui/PaginationNav.vue'
+
+const POR_PAGINA = 11
+
+const categoriaAtiva = ref('Todas')
+const busca = ref('')
+const page = ref(1)
+
+// Filtra por categoria + texto de busca
+const filtradas = computed(() => {
+  return todasNoticias.filter(n => {
+    const matchCategoria = categoriaAtiva.value === 'Todas' || n.categoria === categoriaAtiva.value
+    const termo = busca.value.trim().toLowerCase()
+    const matchBusca = !termo
+      || n.titulo.toLowerCase().includes(termo)
+      || n.descricao.toLowerCase().includes(termo)
+    return matchCategoria && matchBusca
+  })
+})
+
+const totalPages = computed(() => Math.ceil(filtradas.value.length / POR_PAGINA))
+
+const paginadas = computed(() => {
+  const inicio = (page.value - 1) * POR_PAGINA
+  return filtradas.value.slice(inicio, inicio + POR_PAGINA)
+})
+
+function selecionarCategoria(cat) {
+  categoriaAtiva.value = cat
+  page.value = 1
+}
+
+function irParaPagina(p) {
+  page.value = p
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+function limparFiltros() {
+  categoriaAtiva.value = 'Todas'
+  busca.value = ''
+  page.value = 1
+}
+</script>

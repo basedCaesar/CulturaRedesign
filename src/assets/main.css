@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-body bg-cream text-dark;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply text-mid text-xs font-medium uppercase tracking-wide pb-0.5 border-b-2 border-transparent hover:text-orange transition-colors duration-200 whitespace-nowrap;
+  }
+  .nav-link.active {
+    @apply text-teal border-teal;
+  }
+  .section-title {
+    @apply font-display text-2xl font-bold text-dark;
+  }
+  .section-link {
+    @apply text-teal text-xs font-semibold uppercase tracking-widest hover:underline;
+  }
+  .tag {
+    @apply inline-block bg-orange text-white text-[10px] font-semibold px-3 py-1 uppercase tracking-widest rounded;
+  }
+  .card-category {
+    @apply text-[11px] font-semibold uppercase tracking-widest text-teal mb-1;
+  }
+  .card-title {
+    @apply font-display text-[17px] font-semibold text-dark leading-snug;
+  }
+}
