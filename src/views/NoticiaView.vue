@@ -1,9 +1,11 @@
 <template>
   <div class="max-w-3xl mx-auto px-6 py-12">
-    <button @click="voltar" class="text-teal text-sm font-semibold hover:underline mb-6 inline-block">
-  ← Voltar
-</button>
-    <span class="tag mb-4 inline-block">{{ noticia.categoria }}</span>
+    <div class="flex items-center gap-4 mb-6">
+      <button @click="voltar" class="text-teal text-sm font-semibold hover:underline">
+        ← Voltar
+      </button>
+      <span class="tag">{{ noticia.categoria }}</span>
+    </div>
     <h1 class="font-display text-4xl font-bold text-dark leading-tight mb-4">{{ noticia.titulo }}</h1>
     <p class="text-muted text-sm mb-8">{{ noticia.tempo }}</p>
     <div :class="`w-full aspect-video rounded-xl mb-8 bg-gradient-to-br ${noticia.gradient}`" />

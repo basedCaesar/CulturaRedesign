@@ -14,7 +14,6 @@
       </div>
     </div>
 
-    <!-- Sidebar programação -->
     <div class="border-l border-cultborder flex flex-col">
       <div class="px-7 py-6 border-b border-cultborder">
         <p class="text-[11px] font-semibold uppercase tracking-widest text-teal mb-1">Agora na Cultura</p>

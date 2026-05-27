@@ -1,5 +1,15 @@
 <template>
   <nav class="flex items-center justify-center gap-2 flex-wrap" aria-label="Paginação">
+
+    <button
+      v-if="current > 1"
+      @click="$emit('update:page', current - 1)"
+      class="w-9 h-9 rounded-full text-sm font-semibold text-mid hover:bg-cultborder/50 transition-colors flex items-center justify-center"
+      aria-label="Página anterior"
+    >
+      ‹
+    </button>
+
     <button
       v-for="page in totalPages"
       :key="page"

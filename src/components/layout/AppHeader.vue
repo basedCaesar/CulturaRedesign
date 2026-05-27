@@ -2,7 +2,6 @@
   <header class="bg-white border-b border-cultborder sticky top-0 z-50">
     <div class="px-10 h-20 flex items-center justify-between gap-6">
 
-      <!-- Logo -->
       <RouterLink to="/" class="flex items-center gap-3 flex-shrink-0">
         <img
           src="@/assets/cultura_logo.jpg"          alt="TV Cultura"
@@ -15,7 +14,6 @@
         </div>
       </RouterLink>
 
-      <!-- Nav -->
       <nav class="flex items-center gap-1 flex-1 justify-center">
         <RouterLink
           v-for="item in navItems"
@@ -28,7 +26,6 @@
         </RouterLink>
       </nav>
 
-      <!-- Right -->
       <div class="flex items-center gap-3 flex-shrink-0">
         <a href="https://cultura.uol.com.br/aovivo/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2">
 

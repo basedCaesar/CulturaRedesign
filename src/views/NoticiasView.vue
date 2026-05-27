@@ -7,7 +7,6 @@
       <span class="text-sm text-muted">{{ filtradas.length }} resultados</span>
     </div>
 
-    <!-- Filtros + busca -->
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mt-6 mb-8">
       <!-- Chips de categoria -->
       <div class="flex flex-wrap gap-2">
@@ -26,7 +25,6 @@
         </button>
       </div>
 
-      <!-- Busca -->
       <div class="relative flex-shrink-0 md:w-64">
         <input
           v-model="busca"
@@ -39,7 +37,6 @@
       </div>
     </div>
 
-    <!-- Lista -->
     <div v-if="paginadas.length" class="flex flex-col gap-5">
       <NoticiaCard
         v-for="noticia in paginadas"
@@ -48,7 +45,6 @@
       />
     </div>
 
-    <!-- Estado vazio -->
     <div v-else class="text-center py-20">
       <p class="text-muted text-lg">Nenhuma notícia encontrada.</p>
       <button @click="limparFiltros" class="mt-4 text-teal text-sm font-semibold hover:underline">
@@ -56,7 +52,6 @@
       </button>
     </div>
 
-    <!-- Paginação -->
     <div v-if="totalPages > 1" class="mt-12">
       <PaginationNav
         :current="page"

@@ -2,7 +2,6 @@
   <footer class="bg-white border-t-4 border-orange pt-12 pb-8 px-10">
     <div class="grid grid-cols-4 gap-12 mb-10">
 
-      <!-- Brand -->
       <div>
         <div class="flex items-center gap-3 mb-4">
           <img
@@ -19,7 +18,6 @@
         </p>
       </div>
 
-      <!-- Fundação -->
       <div>
         <h4 class="text-[11px] font-bold uppercase tracking-widest text-dark mb-4">Fundação Padre Anchieta</h4>
         <ul class="flex flex-col gap-3">
@@ -29,7 +27,6 @@
         </ul>
       </div>
 
-      <!-- TV + Rádio -->
       <div>
         <h4 class="text-[11px] font-bold uppercase tracking-widest text-dark mb-4">Televisão</h4>
         <ul class="flex flex-col gap-3 mb-6">
@@ -45,7 +42,6 @@
         </ul>
       </div>
 
-      <!-- Programas -->
       <div>
         <h4 class="text-[11px] font-bold uppercase tracking-widest text-dark mb-4">Programas</h4>
         <ul class="flex flex-col gap-3">
@@ -57,7 +53,6 @@
 
     </div>
 
-    <!-- Bottom -->
     <div class="border-t border-cultborder pt-6 flex justify-between items-center">
       <p class="text-xs text-muted">© 2026 Fundação Padre Anchieta — TV Cultura. Todos os direitos reservados.</p>
       <div class="flex gap-2">

@@ -4,14 +4,13 @@
     style="grid-template-columns: 340px 1fr;"
     @click="$router.push(`/noticias/${noticia.id}`)"
   >
-    <!-- Imagem -->
+
     <div class="relative overflow-hidden">
       <div
         :class="`w-full h-full min-h-[200px] bg-gradient-to-br ${noticia.gradient} transition-transform duration-500 group-hover:scale-105`"
       />
     </div>
 
-    <!-- Conteúdo -->
     <div class="p-7 flex flex-col justify-center">
       <p class="text-[11px] font-bold uppercase tracking-widest text-muted mb-1.5">
         {{ noticia.categoria }}
