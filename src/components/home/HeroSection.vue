@@ -1,8 +1,7 @@
 <template>
   <section class="grid bg-white border-b border-cultborder" style="grid-template-columns: 1fr 400px;">
 
-    <!-- Hero principal -->
-    <div class="relative min-h-[460px] overflow-hidden cursor-pointer group">
+    <div class="relative min-h-[460px] overflow-hidden cursor-pointer group" @click="$router.push(`/noticias/${hero.id}`)">
       <div :class="`absolute inset-0 bg-gradient-to-br ${hero.gradient}`" />
       <div class="absolute bottom-0 left-0 right-0 h-3/4 bg-gradient-to-t from-black/90 to-transparent" />
       <div class="absolute bottom-0 left-0 right-0 p-10">

@@ -159,6 +159,108 @@ const base = [
     titulo: 'Big band convida solistas para homenagear a era de ouro do swing',
     descricao: 'Repertório resgata os arranjos que embalaram os salões nos anos 40',
   },
+
+{
+  categoria: 'Entretenimento',
+  titulo: 'Documentário inédito explora bastidores do teatro brasileiro contemporâneo',
+  descricao: 'Produção acompanha companhias de São Paulo, Rio e Recife durante seis meses',
+},
+{
+  categoria: 'Entretenimento',
+  titulo: 'Festival de Inverno de Campos do Jordão tem programação anunciada',
+  descricao: 'Evento traz concertos, masterclasses e ópera ao ar livre em julho',
+},
+{
+  categoria: 'Entretenimento',
+  titulo: 'Filme brasileiro premiado em Cannes ganha exibição especial na Cultura',
+  descricao: 'Longa será apresentado com debate ao vivo com diretor e elenco',
+},
+{
+  categoria: 'Entretenimento',
+  titulo: 'Série retrata a história da MPB pelos olhos das compositoras pioneiras',
+  descricao: 'Episódios trazem entrevistas com Joyce, Rosinha de Valença e Maria Bethânia',
+},
+{
+  categoria: 'Entretenimento',
+  titulo: 'TV Cultura estreia adaptação de clássico da literatura brasileira',
+  descricao: 'Minissérie em quatro episódios revisita obra de Machado de Assis',
+},
+{
+  categoria: 'Entretenimento',
+  titulo: 'Programa especial homenageia 50 anos do tropicalismo no Brasil',
+  descricao: 'Caetano, Gilberto Gil e convidados especiais participam da edição',
+},
+{
+  categoria: 'Entretenimento',
+  titulo: 'Diretor Walter Salles é entrevistado em edição especial do Provoca',
+  descricao: 'Cineasta fala sobre nova produção e o cenário do cinema nacional',
+},
+{
+  categoria: 'Entretenimento',
+  titulo: 'Mostra de cinema independente apresenta 30 filmes inéditos no Brasil',
+  descricao: 'Curadoria reúne produções premiadas em festivais internacionais de 2025',
+},
+{
+  categoria: 'Entretenimento',
+  titulo: 'Documentário sobre samba paulista ganha versão estendida',
+  descricao: 'Nova edição inclui depoimentos de Adoniran Barbosa restaurados em alta definição',
+},
+{
+  categoria: 'Entretenimento',
+  titulo: 'Programa de variedades volta à grade com nova apresentadora',
+  descricao: 'Atração mistura entrevistas, música ao vivo e quadros de humor',
+},
+
+{
+  categoria: 'Esporte',
+  titulo: '"Rivellino é o maior ídolo que eu tenho no futebol", diz Casagrande em documentário',
+  descricao: 'Produção revisitou a carreira do craque, ressaltando o legado dentro e fora de campo',
+},
+{
+  categoria: 'Esporte',
+  titulo: 'TV Cultura exibe documentário em homenagem ao craque Roberto Rivellino',
+  descricao: 'Produção celebra os 80 anos de um dos maiores nomes do futebol brasileiro',
+},
+{
+  categoria: 'Esporte',
+  titulo: 'Santos x Sport: veja horário e onde assistir ao duelo da 36ª rodada do Brasileirão',
+  descricao: 'Partida acontece nesta sexta-feira (28), às 21h30, na Vila Belmiro',
+},
+{
+  categoria: 'Esporte',
+  titulo: 'Fluminense x São Paulo: veja horário e onde assistir ao duelo da 36ª rodada',
+  descricao: 'Partida acontece nesta quinta (19), às 20h30, no Maracanã',
+},
+{
+  categoria: 'Esporte',
+  titulo: 'Especial revisita os principais momentos da Seleção nas Copas do Mundo',
+  descricao: 'Programa relembra títulos, derrotas históricas e jogadores que marcaram época',
+},
+{
+  categoria: 'Esporte',
+  titulo: 'Brasileiros se destacam no Pan-Americano com 18 medalhas no fim de semana',
+  descricao: 'Atletas conquistam pódios na ginástica, natação e judô',
+},
+{
+  categoria: 'Esporte',
+  titulo: 'Programa especial discute o legado de Pelé para o futebol mundial',
+  descricao: 'Mesa-redonda reúne ex-jogadores, jornalistas e historiadores do esporte',
+},
+{
+  categoria: 'Esporte',
+  titulo: 'TV Cultura transmite ao vivo final do Campeonato Paulista de Vôlei',
+  descricao: 'Decisão acontece neste domingo no ginásio do Ibirapuera',
+},
+{
+  categoria: 'Esporte',
+  titulo: 'Documentário acompanha bastidores do automobilismo feminino no Brasil',
+  descricao: 'Produção mostra rotina de pilotas que disputam categorias mistas',
+},
+{
+  categoria: 'Esporte',
+  titulo: 'Tênis brasileiro vive momento de renovação com nova geração',
+  descricao: 'Programa apresenta jovens promessas que despontam no circuito mundial',
+},
 ]
 
 const datas = [

@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
 import './assets/main.css'
-
+import CategoriaView from './views/CategoriaView.vue'
 import HomeView from './views/HomeView.vue'
 import NoticiasView from './views/NoticiasView.vue'
 import NoticiaView from './views/NoticiaView.vue'
@@ -13,6 +13,7 @@ const router = createRouter({
     { path: '/', component: HomeView },
     { path: '/noticias', component: NoticiasView },
     { path: '/noticias/:id', component: NoticiaView },
+    { path: '/categoria/:slug', component: CategoriaView },
   ],
   scrollBehavior() {
     return { top: 0 }

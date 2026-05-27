@@ -53,8 +53,8 @@ const $route = useRoute()
 
 const navItems = [
   { label: 'Notícias', to: '/noticias' },
-  { label: 'Esporte', to: '/esporte' },
-  { label: 'Entretenimento', to: '/entretenimento' },
+  { label: 'Esporte', to: '/categoria/esporte' },
+  { label: 'Entretenimento', to: '/categoria/entretenimento' },
   { label: 'Jazz Sinfônica', to: '/jazz' },
   { label: 'Programas', to: '/programas' },
   { label: 'Grade', to: '/grade' },
