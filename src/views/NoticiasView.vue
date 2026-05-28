@@ -39,7 +39,21 @@
       </div>
     </div>
 
-    <div v-if="paginadas.length" class="flex flex-col gap-5">
+    <!-- Loading -->
+    <div v-if="loading" class="flex flex-col gap-5">
+      <SkeletonRow v-for="i in 5" :key="i" />
+    </div>
+
+    <!-- Error -->
+    <div v-else-if="error" class="text-center py-20">
+      <p class="text-muted text-lg mb-4">{{ error }}</p>
+      <button @click="execute" class="text-teal text-sm font-semibold hover:underline">
+        Tentar novamente
+      </button>
+    </div>
+
+    <!-- Lista -->
+    <div v-else-if="paginadas.length" class="flex flex-col gap-5">
       <NoticiaCard
         v-for="noticia in paginadas"
         :key="noticia.id"
@@ -47,6 +61,7 @@
       />
     </div>
 
+    <!-- Vazio -->
     <div v-else class="text-center py-20">
       <p class="text-muted text-lg">Nenhuma notícia encontrada.</p>
       <button @click="limparFiltros" class="mt-4 text-teal text-sm font-semibold hover:underline">
@@ -54,7 +69,7 @@
       </button>
     </div>
 
-    <div v-if="totalPages > 1" class="mt-12">
+    <div v-if="!loading && !error && totalPages > 1" class="mt-12">
       <PaginationNav
         :current="page"
         :total-pages="totalPages"
@@ -66,10 +81,12 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import { todasNoticias, categorias } from '@/composables/useNoticias.js'
+import { ref, computed, onMounted } from 'vue'
+import { categorias, fetchNoticias } from '@/composables/useNoticias.js'
+import { useAsync } from '@/composables/useAsync.js'
 import NoticiaCard from '@/components/noticias/NoticiaCard.vue'
 import PaginationNav from '@/components/ui/PaginationNav.vue'
+import SkeletonRow from '@/components/ui/SkeletonRow.vue'
 
 const POR_PAGINA = 11
 
@@ -77,9 +94,12 @@ const categoriaAtiva = ref('Todas')
 const busca = ref('')
 const page = ref(1)
 
-// Filtra por categoria + texto de busca
+const { loading, error, data: noticias, execute } = useAsync(fetchNoticias)
+onMounted(() => execute())
+
 const filtradas = computed(() => {
-  return todasNoticias.filter(n => {
+  if (!noticias.value) return []
+  return noticias.value.filter(n => {
     const matchCategoria = categoriaAtiva.value === 'Todas' || n.categoria === categoriaAtiva.value
     const termo = busca.value.trim().toLowerCase()
     const matchBusca = !termo

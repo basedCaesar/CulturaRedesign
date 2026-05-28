@@ -1,5 +1,32 @@
 <template>
-  <div v-if="programa" class="max-w-6xl mx-auto px-6 py-12">
+
+  <!-- Loading -->
+  <div v-if="loading" class="max-w-6xl mx-auto px-6 py-12 animate-pulse">
+    <div class="h-4 bg-gray-200 rounded w-16 mb-8" />
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      <div class="flex flex-col gap-4">
+        <div class="h-10 bg-gray-200 rounded w-2/3" />
+        <div class="h-5 bg-gray-200 rounded w-1/4" />
+        <div class="h-4 bg-gray-200 rounded w-full" />
+        <div class="h-4 bg-gray-200 rounded w-5/6" />
+      </div>
+      <div class="aspect-video rounded-xl bg-gray-200" />
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <SkeletonCard v-for="i in 8" :key="i" />
+    </div>
+  </div>
+
+  <!-- Erro -->
+  <div v-else-if="error" class="max-w-3xl mx-auto px-6 py-20 text-center">
+    <p class="text-muted text-lg mb-4">{{ error }}</p>
+    <RouterLink to="/programas" class="text-teal font-semibold hover:underline">
+      Ver todos os programas
+    </RouterLink>
+  </div>
+
+  <!-- Conteúdo -->
+  <div v-else-if="programa" class="max-w-6xl mx-auto px-6 py-12">
 
     <!-- Voltar -->
     <button @click="voltar" class="text-teal text-sm font-semibold hover:underline mb-8 inline-block">
@@ -40,10 +67,10 @@
       />
     </div>
 
-<div v-else class="text-center py-16">
-  <p class="text-muted text-base">Nenhum episódio disponível no momento.</p>
-</div>
-    
+    <div v-else class="text-center py-16">
+      <p class="text-muted text-base">Nenhum episódio disponível no momento.</p>
+    </div>
+
     <!-- Paginação -->
     <div v-if="totalPages > 1" class="mt-12">
       <PaginationNav
@@ -55,30 +82,25 @@
 
   </div>
 
-  <!-- Programa não encontrado -->
-  <div v-else class="max-w-3xl mx-auto px-6 py-20 text-center">
-    <p class="text-muted text-lg mb-4">Programa não encontrado.</p>
-    <RouterLink to="/programas" class="text-teal font-semibold hover:underline">
-      Ver todos os programas
-    </RouterLink>
-  </div>
 </template>
 
 <script setup>
 import { ref, computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { getProgramaPorId } from '@/composables/useProgramas.js'
+import { fetchProgramaPorId } from '@/composables/useProgramas.js'
+import { useAsync } from '@/composables/useAsync.js'
 import EpisodioCard from '@/components/programas/EpisodioCard.vue'
 import PaginationNav from '@/components/ui/PaginationNav.vue'
+import SkeletonCard from '@/components/ui/SkeletonCard.vue'
 
 const POR_PAGINA = 8
 const route = useRoute()
 const router = useRouter()
 
-const programa = computed(() => getProgramaPorId(route.params.id))
 const page = ref(1)
+const { loading, error, data: programa, execute: load } = useAsync(() => fetchProgramaPorId(route.params.id))
 
-watch(() => route.params.id, () => { page.value = 1 })
+watch(() => route.params.id, () => { load(); page.value = 1 }, { immediate: true })
 
 const totalPages = computed(() =>
   programa.value ? Math.ceil(programa.value.episodios.length / POR_PAGINA) : 0

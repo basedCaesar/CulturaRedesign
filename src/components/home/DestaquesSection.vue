@@ -5,7 +5,18 @@
       <RouterLink to="/noticias" class="section-link">Ver todos →</RouterLink>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+    <!-- Loading -->
+    <div v-if="loading" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+      <SkeletonCard v-for="i in 3" :key="i" />
+    </div>
+
+    <!-- Error -->
+    <div v-else-if="error" class="text-center py-10">
+      <p class="text-muted text-sm">Não foi possível carregar os destaques.</p>
+    </div>
+
+    <!-- Conteúdo -->
+    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
       <article
         v-for="item in destaques"
         :key="item.id"
@@ -26,7 +37,13 @@
 </template>
 
 <script setup>
-import { mockDestaques } from '@/composables/useNews.js'
+import { computed, onMounted } from 'vue'
+import { fetchDestaques } from '@/composables/useNews.js'
+import { useAsync } from '@/composables/useAsync.js'
+import SkeletonCard from '@/components/ui/SkeletonCard.vue'
 
-const destaques = mockDestaques.filter(n => !n.hero)
+const { loading, error, data, execute } = useAsync(fetchDestaques)
+onMounted(() => execute())
+
+const destaques = computed(() => data.value?.filter(n => !n.hero) ?? [])
 </script>

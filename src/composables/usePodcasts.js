@@ -48,3 +48,7 @@ export const podcasts = [
     gradient: 'from-teal to-cyan-900',
   },
 ]
+
+export async function fetchPodcasts() {
+  return podcasts
+}

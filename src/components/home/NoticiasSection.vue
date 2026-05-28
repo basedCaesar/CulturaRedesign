@@ -5,7 +5,18 @@
       <RouterLink to="/noticias" class="section-link">Ver todas →</RouterLink>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
+    <!-- Loading -->
+    <div v-if="loading" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
+      <SkeletonCard v-for="i in 4" :key="i" />
+    </div>
+
+    <!-- Error -->
+    <div v-else-if="error" class="text-center py-10">
+      <p class="text-muted text-sm">Não foi possível carregar as notícias.</p>
+    </div>
+
+    <!-- Conteúdo -->
+    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
       <article
         v-for="item in noticias"
         :key="item.id"
@@ -25,6 +36,11 @@
 </template>
 
 <script setup>
-import { mockNoticias } from '@/composables/useNews.js'
-const noticias = mockNoticias
+import { onMounted } from 'vue'
+import { fetchNoticiasHome } from '@/composables/useNews.js'
+import { useAsync } from '@/composables/useAsync.js'
+import SkeletonCard from '@/components/ui/SkeletonCard.vue'
+
+const { loading, error, data: noticias, execute } = useAsync(fetchNoticiasHome)
+onMounted(() => execute())
 </script>

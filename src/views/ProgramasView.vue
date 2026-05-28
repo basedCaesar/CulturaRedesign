@@ -23,8 +23,21 @@
       </button>
     </nav>
 
+    <!-- Loading -->
+    <div v-if="loading" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <SkeletonCard v-for="i in 8" :key="i" />
+    </div>
+
+    <!-- Error -->
+    <div v-else-if="error" class="text-center py-20">
+      <p class="text-muted text-lg mb-4">{{ error }}</p>
+      <button @click="execute" class="text-teal text-sm font-semibold hover:underline">
+        Tentar novamente
+      </button>
+    </div>
+
     <!-- Grid -->
-    <div v-if="filtrados.length" ref="gridRef" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    <div v-else-if="filtrados.length" ref="gridRef" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
       <ProgramaCard
         v-for="p in filtrados"
         :key="p.id"
@@ -41,21 +54,26 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import { programas, categoriasProgramas } from '@/composables/useProgramas.js'
+import { ref, computed, onMounted } from 'vue'
+import { categoriasProgramas, fetchProgramas } from '@/composables/useProgramas.js'
+import { useAsync } from '@/composables/useAsync.js'
 import ProgramaCard from '@/components/programas/ProgramaCard.vue'
+import SkeletonCard from '@/components/ui/SkeletonCard.vue'
 
 const categoriaAtiva = ref('Todos')
 const gridRef = ref(null)
 
+const { loading, error, data: programas, execute } = useAsync(fetchProgramas)
+onMounted(() => execute())
+
 const filtrados = computed(() => {
-  if (categoriaAtiva.value === 'Todos') return programas
-  return programas.filter(p => p.categoria === categoriaAtiva.value)
+  if (!programas.value) return []
+  if (categoriaAtiva.value === 'Todos') return programas.value
+  return programas.value.filter(p => p.categoria === categoriaAtiva.value)
 })
 
 function selecionar(cat) {
   categoriaAtiva.value = cat
-  // Scroll suave de volta ao grid quando troca de aba
   if (gridRef.value) {
     const top = gridRef.value.getBoundingClientRect().top + window.scrollY - 200
     window.scrollTo({ top, behavior: 'smooth' })

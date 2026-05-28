@@ -1,14 +1,12 @@
 <template>
   <div class="max-w-6xl mx-auto px-6 py-12">
 
-
     <div class="flex items-baseline justify-between mb-2 pb-4 border-b-2 border-teal">
       <h1 class="font-display text-3xl font-bold text-teal uppercase tracking-tight">
         {{ categoriaLabel }}
       </h1>
       <span class="text-sm text-muted">{{ filtradas.length }} resultados</span>
     </div>
-
 
     <div class="flex justify-end mt-6 mb-8">
       <div class="relative w-full md:w-64">
@@ -25,7 +23,20 @@
       </div>
     </div>
 
-    <div v-if="paginadas.length" class="flex flex-col gap-5">
+    <!-- Loading -->
+    <div v-if="loading" class="flex flex-col gap-5">
+      <SkeletonRow v-for="i in 5" :key="i" />
+    </div>
+
+    <!-- Error -->
+    <div v-else-if="error" class="text-center py-20">
+      <p class="text-muted text-lg mb-4">{{ error }}</p>
+      <button @click="execute" class="text-teal text-sm font-semibold hover:underline">
+        Tentar novamente
+      </button>
+    </div>
+
+    <div v-else-if="paginadas.length" class="flex flex-col gap-5">
       <NoticiaCard
         v-for="noticia in paginadas"
         :key="noticia.id"
@@ -40,7 +51,7 @@
       </button>
     </div>
 
-    <div v-if="totalPages > 1" class="mt-12">
+    <div v-if="!loading && !error && totalPages > 1" class="mt-12">
       <PaginationNav
         :current="page"
         :total-pages="totalPages"
@@ -52,11 +63,13 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { todasNoticias } from '@/composables/useNoticias.js'
+import { fetchNoticias } from '@/composables/useNoticias.js'
+import { useAsync } from '@/composables/useAsync.js'
 import NoticiaCard from '@/components/noticias/NoticiaCard.vue'
 import PaginationNav from '@/components/ui/PaginationNav.vue'
+import SkeletonRow from '@/components/ui/SkeletonRow.vue'
 
 const POR_PAGINA = 11
 const route = useRoute()
@@ -73,9 +86,11 @@ const slugToCategoria = {
 const categoria = computed(() => slugToCategoria[route.params.slug] || '')
 const categoriaLabel = computed(() => categoria.value || 'Categoria')
 
-
 const busca = ref('')
 const page = ref(1)
+
+const { loading, error, data: noticias, execute } = useAsync(fetchNoticias)
+onMounted(() => execute())
 
 watch(() => route.params.slug, () => {
   busca.value = ''
@@ -83,7 +98,8 @@ watch(() => route.params.slug, () => {
 })
 
 const filtradas = computed(() => {
-  return todasNoticias.filter(n => {
+  if (!noticias.value) return []
+  return noticias.value.filter(n => {
     const matchCategoria = n.categoria === categoria.value
     const termo = busca.value.trim().toLowerCase()
     const matchBusca = !termo

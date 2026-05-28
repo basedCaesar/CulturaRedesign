@@ -116,3 +116,19 @@ export function getEpisodio(programaId, epId) {
   const episodio = programa.episodios.find(e => e.id === epId)
   return { programa, episodio }
 }
+
+export async function fetchProgramas() {
+  return programas
+}
+
+export async function fetchProgramaPorId(id) {
+  const p = getProgramaPorId(id)
+  if (!p) throw new Error('Programa não encontrado.')
+  return p
+}
+
+export async function fetchEpisodio(programaId, epId) {
+  const result = getEpisodio(programaId, epId)
+  if (!result.programa || !result.episodio) throw new Error('Episódio não encontrado.')
+  return result
+}

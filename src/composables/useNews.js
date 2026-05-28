@@ -54,3 +54,11 @@ export const mockSchedule = [
   { time: '22h30', name: 'Café Filosófico', now: false },
   { time: '23h45', name: 'Provoca', now: false },
 ]
+
+export async function fetchDestaques() {
+  return mockDestaques
+}
+
+export async function fetchNoticiasHome() {
+  return mockNoticias
+}

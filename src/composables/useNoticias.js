@@ -268,6 +268,8 @@ const datas = [
   '22/05/2026', '21/05/2026', '20/05/2026', '19/05/2026',
 ]
 
+import { mockDestaques, mockNoticias } from './useNews.js'
+
 export const todasNoticias = (() => {
   const expandida = []
   let i = 0
@@ -290,3 +292,14 @@ export const todasNoticias = (() => {
     gradient: gradients[idx % gradients.length],
   }))
 })()
+
+export async function fetchNoticias() {
+  return todasNoticias
+}
+
+export async function fetchNoticiaPorId(id) {
+  const todas = [...mockDestaques, ...mockNoticias, ...todasNoticias]
+  const noticia = todas.find(n => n.id === Number(id))
+  if (!noticia) throw new Error('Notícia não encontrada.')
+  return noticia
+}
