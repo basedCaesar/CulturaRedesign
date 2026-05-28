@@ -10,6 +10,7 @@ import JazzSinfonicaView from './views/JazzSinfonicaView.vue'
 import ProgramasView from './views/ProgramasView.vue'
 import ProgramaView from './views/ProgramaView.vue'
 import EpisodioView from './views/EpisodioView.vue'
+import PodcastsView from './views/PodcastsView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -22,6 +23,7 @@ const router = createRouter({
     { path: '/programas', component: ProgramasView },
     { path: '/programas/:id', component: ProgramaView },
     { path: '/programas/:id/:epId', component: EpisodioView },
+    { path: '/podcasts', component: PodcastsView },
   ],
   scrollBehavior() {
     return { top: 0 }
