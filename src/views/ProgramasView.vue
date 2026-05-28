@@ -1,12 +1,10 @@
 <template>
   <div class="max-w-6xl mx-auto px-6 py-12">
 
-    <!-- Título -->
     <div class="mb-2 pb-4 border-b-2 border-teal">
       <h1 class="font-display text-3xl font-bold text-teal uppercase tracking-tight">Programas</h1>
     </div>
 
-    <!-- Tabs de categoria -->
     <nav class="flex items-center justify-center gap-2 md:gap-10 my-10 flex-wrap">
       <button
         v-for="cat in categoriasProgramas"
@@ -23,12 +21,10 @@
       </button>
     </nav>
 
-    <!-- Loading -->
     <div v-if="loading" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
       <SkeletonCard v-for="i in 8" :key="i" />
     </div>
 
-    <!-- Error -->
     <div v-else-if="error" class="text-center py-20">
       <p class="text-muted text-lg mb-4">{{ error }}</p>
       <button @click="execute" class="text-teal text-sm font-semibold hover:underline">
@@ -36,7 +32,6 @@
       </button>
     </div>
 
-    <!-- Grid -->
     <div v-else-if="filtrados.length" ref="gridRef" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
       <ProgramaCard
         v-for="p in filtrados"
@@ -45,7 +40,6 @@
       />
     </div>
 
-    <!-- Estado vazio -->
     <div v-else class="text-center py-20">
       <p class="text-muted text-lg">Nenhum programa nesta categoria.</p>
     </div>

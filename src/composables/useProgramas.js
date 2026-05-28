@@ -22,20 +22,17 @@ const gradients = [
 ]
 
 const programasBase = [
-  // ── Notícias ──
   { nome: 'Roda Viva', categoria: 'Notícias', descricao: 'Um espaço plural para a apresentação de ideias, conceitos e análises sobre temas de interesse da população.' },
   { nome: 'Jornal da Cultura', categoria: 'Notícias', descricao: 'Telejornal noturno que apresenta os principais fatos do Brasil e do mundo com análises aprofundadas.' },
   { nome: 'Jornal da Tarde', categoria: 'Notícias', descricao: 'No ar de segunda a sexta, traz um olhar mais atento para temas de interesse para toda a família.' },
   { nome: 'Opinião', categoria: 'Notícias', descricao: 'Debate semanal sobre os assuntos que estão movimentando a política, a economia e a sociedade.' },
 
-  // ── Arte e Cultura ──
   { nome: 'Metrópolis', categoria: 'Arte e Cultura', descricao: 'A arte e a cultura do mundo em todas as suas manifestações são a matéria-prima do Metrópolis, no ar desde 1988.' },
   { nome: 'Provoca', categoria: 'Arte e Cultura', descricao: 'Marcelo Tas conversa com personalidades que provocam reflexões sobre arte, cultura e comportamento.' },
   { nome: 'Encontros em Brasil', categoria: 'Arte e Cultura', descricao: 'O músico Paulinho Moska recebe cantores na atração, e, juntos, eles visitam diversas cidades do Brasil.' },
   { nome: 'O Novo Sempre Vem', categoria: 'Arte e Cultura', descricao: 'Abre espaço para descobertas musicais da nova cena nacional e oferece visibilidade a diferentes recortes da produção atual.' },
   { nome: 'Brasil Jazz Sinfônica', categoria: 'Arte e Cultura', descricao: 'Concertos da Orquestra Brasil Jazz Sinfônica, preservando o repertório sinfônico popular brasileiro.' },
 
-  // ── Infantil ──
   { nome: 'Quintal da Cultura', categoria: 'Infantil', descricao: 'Une entretenimento e conhecimento, despertando curiosidade nas crianças pelo mundo ao seu redor.' },
   { nome: 'Bluey', categoria: 'Infantil', descricao: 'O desenho traz uma cachorrinha da raça Blue Heeler, que adora brincar e transforma a vida familiar cotidiana em aventuras extraordinárias.' },
   { nome: 'Paramigos Imparáveis', categoria: 'Infantil', descricao: 'Mostra como um grupo de amigos, unidos pelo esporte e pelo amor à natureza, transformam o mundo.' },
@@ -45,7 +42,6 @@ const programasBase = [
   { nome: 'Cocoricó', categoria: 'Infantil', descricao: 'Programa clássico da TV Cultura que apresenta as aventuras dos personagens do sítio com música e brincadeiras.' },
   { nome: 'Mundo da Lua', categoria: 'Infantil', descricao: 'Mais do que nostalgia, é um convite para que pais e filhos vivam juntos a imaginação e a magia de sonhar acordados.' },
 
-  // ── Educação ──
   { nome: 'Arena dos Saberes', categoria: 'Educação', descricao: 'Em cada entrevista promove um aprendizado, uma troca de experiências e de conhecimento enriquecedora para o público.' },
   { nome: 'Viola e Tambor', categoria: 'Educação', descricao: 'Direcionada a crianças de três a seis anos, é uma produção infantil que celebra a diversidade cultural brasileira.' },
   { nome: 'Café Filosófico', categoria: 'Educação', descricao: 'Programa de filosofia e psicanálise com as ideias de grandes pensadores sobre o mundo contemporâneo.' },
@@ -54,7 +50,6 @@ const programasBase = [
   { nome: 'Antimatéria', categoria: 'Educação', descricao: 'Programa de divulgação científica que aborda os grandes temas da física, química, biologia e tecnologia.' },
 ]
 
-// Gera um slug a partir do nome (usado no id do episódio)
 function slugify(txt) {
   return txt
     .toLowerCase()
@@ -64,7 +59,6 @@ function slugify(txt) {
     .replace(/(^-|-$)/g, '')
 }
 
-// Gera 24 episódios com datas decrescentes a partir de hoje
 function gerarEpisodios(programa, gradient) {
   const episodios = []
   const hoje = new Date('2026-05-20')
@@ -82,7 +76,7 @@ function gerarEpisodios(programa, gradient) {
       id: `${slug}-${yyyy}${mm}${dd}`,
       titulo: `${programa.nome} | ${dataFmt}`,
       data: dataFmt,
-      youtubeId: '', // vazio por enquanto; o scraper preenche depois
+      youtubeId: '', 
       descricao: `Confira a edição de ${dataFmt} de ${programa.nome}. Conteúdo completo disponível em breve.`,
       gradient,
     })
@@ -105,7 +99,6 @@ export const programas = programasBase.map((p, i) => {
 
 
 
-// Helpers de busca
 export function getProgramaPorId(id) {
   return programas.find(p => p.id === Number(id))
 }

@@ -1,6 +1,5 @@
 <template>
 
-  <!-- Loading -->
   <div v-if="loading" class="max-w-4xl mx-auto px-6 py-12 animate-pulse">
     <div class="flex items-center gap-4 mb-8">
       <div class="h-4 bg-gray-200 rounded w-16" />
@@ -12,7 +11,6 @@
     <div class="h-4 bg-gray-200 rounded w-5/6" />
   </div>
 
-  <!-- Erro -->
   <div v-else-if="error" class="max-w-3xl mx-auto px-6 py-20 text-center">
     <p class="text-muted text-lg mb-4">{{ error }}</p>
     <RouterLink to="/programas" class="text-teal font-semibold hover:underline">
@@ -20,10 +18,8 @@
     </RouterLink>
   </div>
 
-  <!-- Conteúdo -->
   <div v-else-if="dados" class="max-w-4xl mx-auto px-6 py-12">
 
-    <!-- Voltar -->
     <div class="flex items-center gap-4 mb-8">
       <button @click="voltar" class="text-teal text-sm font-semibold hover:underline">
         ← Voltar
@@ -35,7 +31,6 @@
 
     <h1 class="font-display text-3xl font-bold text-dark mb-6">{{ dados.episodio.titulo }}</h1>
 
-    <!-- Player -->
     <div class="aspect-video rounded-xl overflow-hidden mb-8 bg-dark">
       <iframe
         v-if="dados.episodio.youtubeId"
@@ -58,7 +53,6 @@
       </div>
     </div>
 
-    <!-- Descrição -->
     <div class="prose max-w-none">
       <p class="text-mid text-base leading-relaxed whitespace-pre-line">{{ dados.episodio.descricao }}</p>
     </div>

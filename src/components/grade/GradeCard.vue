@@ -10,7 +10,6 @@
       item.programaId ? 'cursor-pointer' : '',
     ]"
   >
-    <!-- Thumbnail com horário -->
     <div class="relative overflow-hidden">
       <div
         :class="`w-full h-full min-h-[140px] bg-gradient-to-br ${item.gradient} transition-transform duration-500 group-hover:scale-105`"
@@ -32,7 +31,6 @@
       </span>
     </div>
 
-    <!-- Conteúdo -->
     <div class="p-6 flex flex-col justify-center">
       <p class="text-[11px] font-bold uppercase tracking-widest text-muted mb-1">
         {{ item.categoria }}

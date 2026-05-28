@@ -1,13 +1,11 @@
 import { programas } from './useProgramas.js'
 
-// Converte "HH:MM" → minutos desde meia-noite
 function toCalMin(horario) {
   const [h, m] = horario.split(':').map(Number)
   return h * 60 + m
 }
 
-// Converte horário do calendário para minutos do "dia de transmissão"
-// O dia de transmissão começa às 05:00 e vai até 04:59 do dia seguinte
+
 function toBroadcastMin(horario) {
   const cal = toCalMin(horario)
   return cal < 300 ? cal + 1440 - 300 : cal - 300
@@ -23,8 +21,6 @@ function findPrograma(nome) {
 
 const gradienteFallback = 'from-slate-800 to-slate-600'
 
-// Grade base: horário "HH:MM", mesmo horário repetido todos os dias (mock)
-// Dia de transmissão: 05:00 → 04:59 (último slot antes do próximo Abertura)
 const gradeBase = [
   { horario: '05:00', nome: 'Jornal da Cultura',       categoria: 'Notícias'      },
   { horario: '05:55', nome: 'Abertura da Emissora',    categoria: 'Cultura',       gradient: 'from-orange-900 to-orange-700' },
@@ -56,10 +52,8 @@ const gradeBase = [
   { horario: '01:30', nome: 'Arena dos Saberes',       categoria: 'Educação'      },
   { horario: '02:30', nome: 'Antimatéria',             categoria: 'Educação'      },
   { horario: '03:30', nome: 'Encontros em Brasil',     categoria: 'Arte e Cultura'},
-  // 03:30 + 90 min = 05:00 → fecha o ciclo
 ]
 
-// Grade enriquecida com dados de useProgramas onde disponível
 export const gradeCompleta = gradeBase
   .map(item => {
     const programa = findPrograma(item.nome)
@@ -74,15 +68,14 @@ export const gradeCompleta = gradeBase
   })
   .sort((a, b) => a.broadcastMin - b.broadcastMin)
 
-// gradeDisplay: mesmos itens, mas 05:00 movido para o final (último do dia)
 export const gradeDisplay = [
   ...gradeCompleta.filter(i => i.horario !== '05:00'),
   ...gradeCompleta.filter(i => i.horario === '05:00'),
 ]
 
-const MORNING_END    = 390  // 11:30 broadcast min
-const AFTERNOON_START = 450  // 12:30
-const PRIME_START     = 810  // 18:30
+const MORNING_END    = 390  
+const AFTERNOON_START = 450  
+const PRIME_START     = 810  
 
 function rotateBlock(block, shift) {
   const s = ((shift % block.length) + block.length) % block.length
@@ -96,8 +89,6 @@ function rotateBlock(block, shift) {
   }))
 }
 
-// Retorna a grade para um dia específico.
-// Manhã fixa. Tarde (12:30-18:00) rotaciona por dayDiff. Prime-time (18:30+) por dayDiff×2.
 export function getGradeParaDia(date = new Date()) {
   const d = new Date(date)
   d.setHours(0, 0, 0, 0)
@@ -120,7 +111,6 @@ export function getGradeParaDia(date = new Date()) {
   ]
 }
 
-// Índice do programa em exibição agora, baseado no relógio do sistema
 function getCurrentIndex() {
   const now = new Date()
   const calMin = now.getHours() * 60 + now.getMinutes()
@@ -133,7 +123,6 @@ function getCurrentIndex() {
   return idx
 }
 
-// Retorna `count` programas a partir do atual, marcando o primeiro como `now`
 export function getAgendaProxima(count = 6) {
   const currentIdx = getCurrentIndex()
   return Array.from({ length: count }, (_, i) => ({
@@ -142,7 +131,6 @@ export function getAgendaProxima(count = 6) {
   }))
 }
 
-// Helpers de data/hora para exibição
 
 const DIAS_SEMANA = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab']
 const DIAS_SEMANA_FULL = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado']
@@ -153,7 +141,6 @@ export function getDataFormatada(date = new Date()) {
   return `${DIAS_SEMANA_FULL[date.getDay()]}, ${date.getDate()} de ${MESES[date.getMonth()]}`
 }
 
-// Gera 21 dias (hoje-10 até hoje+10) para o navegador de dias da grade
 export function getDiasNav() {
   const hoje = new Date()
   hoje.setHours(0, 0, 0, 0)

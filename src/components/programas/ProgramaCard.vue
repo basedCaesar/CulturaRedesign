@@ -3,7 +3,6 @@
     class="group cursor-pointer"
     @click="$router.push(`/programas/${programa.id}`)"
   >
-    <!-- Capa placeholder -->
     <div class="aspect-video rounded-lg overflow-hidden mb-4">
       <div
         :class="`w-full h-full bg-gradient-to-br ${programa.gradient} flex items-center justify-center`"
@@ -14,7 +13,6 @@
       </div>
     </div>
 
-    <!-- Info -->
     <h3 class="font-display text-base font-bold text-teal uppercase tracking-wide mb-2 group-hover:text-orange transition-colors">
       {{ programa.nome }}
     </h3>

@@ -34,13 +34,12 @@ const ativo = ref('historia')
 function scrollTo(id) {
   const el = document.getElementById(id)
   if (el) {
-    const offset = 140 // altura do header + sub-nav
+    const offset = 140 
     const top = el.getBoundingClientRect().top + window.scrollY - offset
     window.scrollTo({ top, behavior: 'smooth' })
   }
 }
 
-// Detecta qual seção está visível pra destacar no nav
 let observer = null
 
 onMounted(() => {

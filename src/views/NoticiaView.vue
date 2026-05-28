@@ -1,7 +1,6 @@
 <template>
   <div class="max-w-3xl mx-auto px-6 py-12">
 
-    <!-- Loading -->
     <div v-if="loading" class="animate-pulse">
       <div class="h-4 bg-gray-200 rounded w-24 mb-6" />
       <div class="h-8 bg-gray-200 rounded w-3/4 mb-4" />
@@ -12,7 +11,6 @@
       <div class="h-4 bg-gray-200 rounded w-4/5" />
     </div>
 
-    <!-- Erro -->
     <div v-else-if="error" class="py-20 text-center">
       <p class="text-muted text-lg mb-4">{{ error }}</p>
       <RouterLink to="/noticias" class="text-teal font-semibold hover:underline">
@@ -20,7 +18,6 @@
       </RouterLink>
     </div>
 
-    <!-- Conteúdo -->
     <div v-else-if="noticia">
       <div class="flex items-center gap-4 mb-6">
         <button @click="voltar" class="text-teal text-sm font-semibold hover:underline">

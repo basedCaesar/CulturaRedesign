@@ -23,12 +23,10 @@
       </div>
     </div>
 
-    <!-- Loading -->
     <div v-if="loading" class="flex flex-col gap-5">
       <SkeletonRow v-for="i in 5" :key="i" />
     </div>
 
-    <!-- Error -->
     <div v-else-if="error" class="text-center py-20">
       <p class="text-muted text-lg mb-4">{{ error }}</p>
       <button @click="execute" class="text-teal text-sm font-semibold hover:underline">

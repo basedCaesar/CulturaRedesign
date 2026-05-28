@@ -1,6 +1,5 @@
 <template>
 
-  <!-- Loading -->
   <div v-if="loading" class="max-w-6xl mx-auto px-6 py-12 animate-pulse">
     <div class="h-4 bg-gray-200 rounded w-16 mb-8" />
     <div class="grid md:grid-cols-2 gap-8 mb-16">
@@ -17,7 +16,6 @@
     </div>
   </div>
 
-  <!-- Erro -->
   <div v-else-if="error" class="max-w-3xl mx-auto px-6 py-20 text-center">
     <p class="text-muted text-lg mb-4">{{ error }}</p>
     <RouterLink to="/programas" class="text-teal font-semibold hover:underline">
@@ -25,7 +23,6 @@
     </RouterLink>
   </div>
 
-  <!-- Conteúdo -->
   <div v-else-if="programa" class="max-w-6xl mx-auto px-6 py-12">
 
     <!-- Voltar -->
@@ -33,7 +30,6 @@
       ← Voltar
     </button>
 
-    <!-- Header do programa -->
     <div class="grid md:grid-cols-2 gap-8 mb-16">
       <!-- Info -->
       <div class="flex flex-col justify-center">
@@ -44,7 +40,6 @@
         <p class="text-mid text-base leading-relaxed">{{ programa.descricaoLonga }}</p>
       </div>
 
-      <!-- Banner placeholder -->
       <div :class="`aspect-video rounded-xl bg-gradient-to-br ${programa.gradient} flex items-center justify-center`">
         <span class="font-display text-white/40 text-2xl font-bold tracking-widest text-center px-6">
           {{ programa.nome.toUpperCase() }}
@@ -52,7 +47,6 @@
       </div>
     </div>
 
-    <!-- Histórico de episódios -->
     <div class="flex items-baseline justify-between mb-8 pb-4 border-b-2 border-dark">
       <h2 class="font-display text-2xl font-bold text-dark uppercase">Histórico de programas</h2>
       <span class="text-sm text-muted">{{ programa.episodios.length }} episódios</span>
@@ -71,7 +65,6 @@
       <p class="text-muted text-base">Nenhum episódio disponível no momento.</p>
     </div>
 
-    <!-- Paginação -->
     <div v-if="totalPages > 1" class="mt-12">
       <PaginationNav
         :current="page"

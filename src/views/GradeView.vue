@@ -1,12 +1,10 @@
 <template>
   <div class="max-w-6xl mx-auto px-6 py-12">
 
-    <!-- Título -->
     <div class="mb-8 pb-4 border-b-2 border-teal">
       <h1 class="font-display text-3xl font-bold text-teal uppercase tracking-tight">Grade de Programação</h1>
     </div>
 
-    <!-- Navegador de dias -->
     <div class="flex items-center justify-center gap-2 mb-10 flex-wrap">
       <button
         :class="[
@@ -54,7 +52,6 @@
       </button>
     </div>
 
-    <!-- Lista de programas -->
     <div class="flex flex-col gap-5">
       <GradeCard
         v-for="item in gradeExibida"
@@ -131,7 +128,6 @@ const gradeExibida = computed(() => {
   const calMin = now.getHours() * 60 + now.getMinutes()
   const broadcastNow = calMin < 300 ? calMin + 1440 - 300 : calMin - 300
 
-  // Usa o maior broadcastMin <= broadcastNow (order-independent)
   let currentBMin = -1
   for (const item of grade) {
     if (item.broadcastMin <= broadcastNow && item.broadcastMin > currentBMin) {

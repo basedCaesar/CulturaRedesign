@@ -1,17 +1,14 @@
 <template>
   <div class="max-w-6xl mx-auto px-6 py-12">
 
-    <!-- Título -->
     <div class="mb-10 pb-4 border-b-2 border-teal">
       <h1 class="font-display text-3xl font-bold text-teal uppercase tracking-tight">Podcasts</h1>
     </div>
 
-    <!-- Loading -->
     <div v-if="loading" class="flex flex-col gap-6">
       <SkeletonRow v-for="i in 4" :key="i" />
     </div>
 
-    <!-- Error -->
     <div v-else-if="error" class="text-center py-20">
       <p class="text-muted text-lg mb-4">{{ error }}</p>
       <button @click="execute" class="text-teal text-sm font-semibold hover:underline">
@@ -19,7 +16,6 @@
       </button>
     </div>
 
-    <!-- Lista -->
     <div v-else-if="podcasts?.length" class="flex flex-col gap-6">
       <PodcastCard
         v-for="podcast in podcasts"

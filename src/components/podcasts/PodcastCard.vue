@@ -5,7 +5,6 @@
     rel="noopener noreferrer"
     class="group grid gap-0 bg-white border border-cultborder rounded-lg overflow-hidden hover:shadow-md transition-shadow grid-cols-1 sm:grid-cols-[220px_1fr]"
   >
-    <!-- Capa -->
     <div class="relative overflow-hidden">
       <div
         :class="`w-full h-full min-h-[160px] bg-gradient-to-br ${podcast.gradient} transition-transform duration-500 group-hover:scale-105 flex items-center justify-center`"
@@ -16,7 +15,6 @@
       </div>
     </div>
 
-    <!-- Conteúdo -->
     <div class="p-7 flex flex-col justify-center">
       <p class="text-[11px] font-bold uppercase tracking-widest text-muted mb-1.5">
         {{ podcast.autor }}

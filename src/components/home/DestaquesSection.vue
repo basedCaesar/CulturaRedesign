@@ -5,17 +5,14 @@
       <RouterLink to="/noticias" class="section-link">Ver todos →</RouterLink>
     </div>
 
-    <!-- Loading -->
     <div v-if="loading" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
       <SkeletonCard v-for="i in 3" :key="i" />
     </div>
 
-    <!-- Error -->
     <div v-else-if="error" class="text-center py-10">
       <p class="text-muted text-sm">Não foi possível carregar os destaques.</p>
     </div>
 
-    <!-- Conteúdo -->
     <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
       <article
         v-for="item in destaques"

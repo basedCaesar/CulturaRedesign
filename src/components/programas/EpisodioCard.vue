@@ -9,7 +9,6 @@
           {{ episodio.data }}
         </span>
       </div>
-      <!-- Play overlay -->
       <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
         <div class="opacity-0 group-hover:opacity-100 w-12 h-12 rounded-full bg-white/95 flex items-center justify-center transition-opacity">
           <span class="text-orange text-lg ml-0.5">▶</span>

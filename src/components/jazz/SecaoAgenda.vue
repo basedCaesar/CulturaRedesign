@@ -12,7 +12,6 @@
           :key="i"
           class="bg-white border border-cultborder rounded-xl overflow-hidden flex flex-col md:flex-row hover:border-orange hover:shadow-md transition-all group"
         >
-          <!-- Data -->
           <div class="bg-dark text-white flex flex-col items-center justify-center px-8 py-6 md:w-40">
             <p class="font-display text-5xl font-bold leading-none">{{ evento.dataDia }}</p>
             <p class="text-orange text-sm font-bold uppercase tracking-widest mt-2">{{ evento.dataMes }}</p>

@@ -1,4 +1,3 @@
-// Mock data — substituir por chamadas de API real futuramente
 export const mockDestaques = [
   {
     id: 1,

@@ -1,7 +1,6 @@
 <template>
   <div class="max-w-6xl mx-auto px-6 py-12">
 
-    <!-- Título -->
     <div class="flex items-baseline justify-between mb-2 pb-4 border-b-2 border-teal">
       <h1 class="font-display text-3xl font-bold text-teal uppercase tracking-tight">Notícias</h1>
       <span class="text-sm text-muted">{{ filtradas.length }} resultados</span>
@@ -39,12 +38,10 @@
       </div>
     </div>
 
-    <!-- Loading -->
     <div v-if="loading" class="flex flex-col gap-5">
       <SkeletonRow v-for="i in 5" :key="i" />
     </div>
 
-    <!-- Error -->
     <div v-else-if="error" class="text-center py-20">
       <p class="text-muted text-lg mb-4">{{ error }}</p>
       <button @click="execute" class="text-teal text-sm font-semibold hover:underline">
@@ -52,7 +49,6 @@
       </button>
     </div>
 
-    <!-- Lista -->
     <div v-else-if="paginadas.length" class="flex flex-col gap-5">
       <NoticiaCard
         v-for="noticia in paginadas"
@@ -61,7 +57,6 @@
       />
     </div>
 
-    <!-- Vazio -->
     <div v-else class="text-center py-20">
       <p class="text-muted text-lg">Nenhuma notícia encontrada.</p>
       <button @click="limparFiltros" class="mt-4 text-teal text-sm font-semibold hover:underline">

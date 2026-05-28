@@ -15,7 +15,6 @@
         </div>
       </RouterLink>
 
-      <!-- Desktop nav -->
       <nav class="hidden lg:flex items-center gap-1 flex-1 justify-center" aria-label="Menu principal">
         <template v-for="item in navItems" :key="item.label">
           <a
@@ -34,7 +33,6 @@
         </template>
       </nav>
 
-      <!-- Desktop: ao vivo + search -->
       <div class="hidden lg:flex items-center gap-3 flex-shrink-0">
         <a href="https://cultura.uol.com.br/aovivo/" target="_blank" rel="noopener noreferrer">
           <button
@@ -53,7 +51,6 @@
         </button>
       </div>
 
-      <!-- Mobile: ao vivo + hamburger -->
       <div class="flex lg:hidden items-center gap-2 flex-shrink-0">
         <a href="https://cultura.uol.com.br/aovivo/" target="_blank" rel="noopener noreferrer">
           <button
@@ -82,7 +79,6 @@
 
     </div>
 
-    <!-- Mobile menu dropdown -->
     <div
       v-show="menuOpen"
       id="mobile-menu"

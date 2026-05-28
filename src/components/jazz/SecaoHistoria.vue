@@ -2,11 +2,9 @@
   <section id="historia" class="py-12 sm:py-20 px-4 sm:px-6 lg:px-10 bg-cream">
     <div class="max-w-4xl mx-auto">
 
-      <!-- Título -->
       <h2 class="font-display text-4xl font-bold text-dark mb-2">História</h2>
       <div class="h-1 w-16 bg-orange mb-12" />
 
-      <!-- Intro com dropcap -->
       <p class="text-lg leading-relaxed text-mid mb-8 first-letter:text-7xl first-letter:font-display first-letter:font-bold first-letter:text-orange first-letter:float-left first-letter:mr-3 first-letter:leading-none first-letter:mt-1">
         {{ sobre.intro }}
       </p>
@@ -15,7 +13,6 @@
         {{ p }}
       </p>
 
-      <!-- Citação destacada -->
       <blockquote class="my-16 py-10 border-y-2 border-orange text-center">
         <p class="font-display text-2xl md:text-3xl italic text-dark leading-relaxed">
           <span class="text-orange text-5xl leading-none align-middle mr-2">"</span>{{ sobre.citacao }}<span class="text-orange text-5xl leading-none align-middle ml-2">"</span>
@@ -23,7 +20,6 @@
       </blockquote>
     </div>
 
-    <!-- Timeline -->
     <div class="max-w-5xl mx-auto mt-20">
       <h3 class="font-display text-2xl font-bold text-dark text-center mb-2">Trajetória</h3>
       <p class="text-sm text-muted text-center mb-12 uppercase tracking-widest">Mais de três décadas de história</p>
@@ -38,7 +34,6 @@
             :key="i"
             class="relative text-center"
           >
-            <!-- Bolinha -->
             <div class="relative z-10 w-12 h-12 mx-auto mb-4 rounded-full bg-orange text-white flex items-center justify-center font-bold text-sm shadow-md">
               {{ i + 1 }}
             </div>
@@ -50,7 +45,6 @@
       </div>
     </div>
 
-    <!-- Primeira formação -->
     <div class="max-w-5xl mx-auto mt-24">
       <h3 class="font-display text-2xl font-bold text-dark text-center mb-2">Primeira formação</h3>
       <p class="text-sm text-muted text-center mb-12 uppercase tracking-widest">Os chefes de naipe fundadores</p>
@@ -67,7 +61,6 @@
       </div>
     </div>
 
-    <!-- Artistas convidados (cloud) -->
     <div class="max-w-5xl mx-auto mt-24">
       <h3 class="font-display text-2xl font-bold text-dark text-center mb-2">Artistas que passaram pela orquestra</h3>
       <p class="text-sm text-muted text-center mb-12 uppercase tracking-widest">Em 35 anos de história</p>
@@ -86,7 +79,6 @@
       </div>
     </div>
 
-    <!-- Programação atual -->
     <div class="max-w-3xl mx-auto mt-24">
       <h3 class="font-display text-2xl font-bold text-dark text-center mb-2">Hoje na grade</h3>
       <p class="text-sm text-muted text-center mb-10 uppercase tracking-widest">Onde acompanhar a orquestra</p>
@@ -118,7 +110,6 @@ import {
   programacaoAtual,
 } from '@/composables/useJazzSinfonica.js'
 
-// Varia o tamanho dos nomes na "wall of fame" pra dar ritmo visual
 function tamanhoArtista(i) {
   const tamanhos = ['text-base', 'text-lg', 'text-xl', 'text-2xl', 'text-lg', 'text-base', 'text-2xl', 'text-xl']
   return tamanhos[i % tamanhos.length]
