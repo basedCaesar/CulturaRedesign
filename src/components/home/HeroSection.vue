@@ -16,25 +16,33 @@
     <div class="border-l border-cultborder flex flex-col">
       <div class="px-7 py-6 border-b border-cultborder">
         <p class="text-[11px] font-semibold uppercase tracking-widest text-teal mb-1">Agora na Cultura</p>
-        <p class="text-sm text-muted">Quinta-feira, 21 de maio</p>
+        <p class="text-sm text-muted">{{ dataHoje }}</p>
       </div>
 
       <div class="flex-1">
-        <div
-          v-for="item in schedule"
-          :key="item.time"
-          :class="['flex gap-4 px-7 py-3.5 border-b border-cultborder cursor-pointer transition-colors hover:bg-cream', item.now ? 'bg-orange/5' : '']"
+        <component
+          :is="item.programaId ? 'RouterLink' : 'div'"
+          :to="item.programaId ? `/programas/${item.programaId}` : undefined"
+          v-for="item in agenda"
+          :key="item.horario + item.nome"
+          :class="[
+            'flex gap-4 px-7 py-3.5 border-b border-cultborder transition-colors hover:bg-cream',
+            item.now ? 'bg-orange/5' : '',
+            item.programaId ? 'cursor-pointer group/row' : '',
+          ]"
         >
-          <span :class="['text-sm font-semibold min-w-[50px] tabular-nums', item.now ? 'text-orange' : 'text-dark']">
-            {{ item.time }}
+          <span :class="['text-sm font-semibold min-w-[50px] tabular-nums flex-shrink-0', item.now ? 'text-orange' : 'text-dark']">
+            {{ item.horarioFmt }}
           </span>
           <div>
             <span v-if="item.now" class="inline-block text-[10px] font-semibold uppercase tracking-wider text-orange bg-orange/10 px-2 py-0.5 rounded mb-1">
               Ao vivo
             </span>
-            <p class="text-sm text-mid leading-snug">{{ item.name }}</p>
+            <p :class="['text-sm leading-snug', item.programaId ? 'text-mid group-hover/row:text-teal transition-colors' : 'text-mid']">
+              {{ item.nome }}
+            </p>
           </div>
-        </div>
+        </component>
       </div>
 
       <div class="px-7 py-4 border-t border-cultborder text-center">
@@ -48,8 +56,10 @@
 </template>
 
 <script setup>
-import { mockDestaques, mockSchedule } from '@/composables/useNews.js'
+import { mockDestaques } from '@/composables/useNews.js'
+import { getAgendaProxima, getDataFormatada } from '@/composables/useGrade.js'
 
 const hero = mockDestaques.find(n => n.hero)
-const schedule = mockSchedule
+const agenda = getAgendaProxima(6)
+const dataHoje = getDataFormatada()
 </script>

@@ -11,6 +11,7 @@ import ProgramasView from './views/ProgramasView.vue'
 import ProgramaView from './views/ProgramaView.vue'
 import EpisodioView from './views/EpisodioView.vue'
 import PodcastsView from './views/PodcastsView.vue'
+import GradeView from './views/GradeView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -24,6 +25,7 @@ const router = createRouter({
     { path: '/programas/:id', component: ProgramaView },
     { path: '/programas/:id/:epId', component: EpisodioView },
     { path: '/podcasts', component: PodcastsView },
+    { path: '/grade', component: GradeView },
   ],
   scrollBehavior() {
     return { top: 0 }
