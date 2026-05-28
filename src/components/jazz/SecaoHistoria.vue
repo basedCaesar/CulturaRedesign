@@ -1,6 +1,6 @@
 <template>
   <section id="historia" class="py-20 px-10 bg-cream">
-    <div class="max-w-3xl mx-auto">
+    <div class="max-w-4xl mx-auto">
 
       <!-- Título -->
       <h2 class="font-display text-4xl font-bold text-dark mb-2">História</h2>

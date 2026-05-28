@@ -1,12 +1,10 @@
 <template>
   <section id="integrantes" class="py-20 px-10 bg-white">
-    <div class="max-w-5xl mx-auto">
+    <div class="max-w-4xl mx-auto">
 
-      <!-- Título -->
       <h2 class="font-display text-4xl font-bold text-dark mb-2">Integrantes</h2>
       <div class="h-1 w-16 bg-orange mb-12" />
 
-      <!-- Ficha técnica -->
       <div class="mb-20">
         <h3 class="font-display text-xl font-bold text-teal mb-2">Ficha técnica</h3>
         <p class="text-xs text-muted uppercase tracking-widest mb-8">Brasil Jazz Sinfônica · 2026</p>
@@ -23,7 +21,6 @@
         </div>
       </div>
 
-      <!-- Músicos por naipe -->
       <div>
         <h3 class="font-display text-xl font-bold text-teal mb-2">Músicos</h3>
         <p class="text-xs text-muted uppercase tracking-widest mb-10">Organizados por naipe</p>
@@ -33,11 +30,10 @@
             v-for="naipe in musicos"
             :key="naipe.naipe"
           >
-            <!-- Nome do naipe -->
+
             <h4 class="font-display text-2xl font-bold text-dark mb-2">{{ naipe.naipe }}</h4>
             <div class="h-px bg-cultborder mb-6" />
 
-            <!-- Grupos de instrumentos -->
             <div class="grid md:grid-cols-2 gap-x-8 gap-y-6">
               <div
                 v-for="grupo in naipe.grupos"
