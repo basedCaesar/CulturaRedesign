@@ -6,6 +6,7 @@ import CategoriaView from './views/CategoriaView.vue'
 import HomeView from './views/HomeView.vue'
 import NoticiasView from './views/NoticiasView.vue'
 import NoticiaView from './views/NoticiaView.vue'
+import JazzSinfonicaView from './views/JazzSinfonicaView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -14,6 +15,7 @@ const router = createRouter({
     { path: '/noticias', component: NoticiasView },
     { path: '/noticias/:id', component: NoticiaView },
     { path: '/categoria/:slug', component: CategoriaView },
+    { path: '/jazz-sinfonica', component: JazzSinfonicaView },
   ],
   scrollBehavior() {
     return { top: 0 }

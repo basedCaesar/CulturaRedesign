@@ -55,7 +55,7 @@ const navItems = [
   { label: 'Notícias', to: '/noticias' },
   { label: 'Esporte', to: '/categoria/esporte' },
   { label: 'Entretenimento', to: '/categoria/entretenimento' },
-  { label: 'Jazz Sinfônica', to: '/jazz' },
+  { label: 'Jazz Sinfônica', to: '/jazz-sinfonica' },
   { label: 'Programas', to: '/programas' },
   { label: 'Grade', to: '/grade' },
   { label: 'Rádio', to: '/radio' },
