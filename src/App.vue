@@ -1,8 +1,9 @@
 <template>
   <div class="min-h-screen flex flex-col">
+    <a href="#main-content" class="skip-to-main">Ir para o conteúdo principal</a>
     <AppTopbar />
     <AppHeader />
-    <main class="flex-1">
+    <main id="main-content" class="flex-1">
       <RouterView />
     </main>
     <AppFooter />

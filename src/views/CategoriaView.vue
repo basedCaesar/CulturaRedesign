@@ -12,14 +12,16 @@
 
     <div class="flex justify-end mt-6 mb-8">
       <div class="relative w-full md:w-64">
+        <label for="busca-categoria" class="sr-only">Buscar notícias</label>
         <input
+          id="busca-categoria"
           v-model="busca"
           @input="page = 1"
-          type="text"
+          type="search"
           placeholder="Buscar..."
           class="w-full text-sm border border-cultborder rounded-lg pl-10 pr-4 py-2.5 focus:border-teal focus:outline-none transition-colors"
         />
-        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-muted text-lg">⌕</span>
+        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-muted text-lg" aria-hidden="true">⌕</span>
       </div>
     </div>
 

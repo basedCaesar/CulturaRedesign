@@ -2,7 +2,7 @@
   <nav
     class="sticky top-20 z-40 bg-white border-b border-cultborder shadow-sm"
   >
-    <div class="max-w-5xl mx-auto px-10 flex items-center justify-center gap-2 md:gap-8">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-center gap-2 md:gap-8">
       <button
         v-for="item in items"
         :key="item.id"

@@ -10,7 +10,7 @@
     <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20" />
 
     <!-- Conteúdo -->
-    <div class="relative z-10 h-full flex flex-col justify-end px-10 pb-16 max-w-5xl">
+    <div class="relative z-10 h-full flex flex-col justify-end px-4 sm:px-6 lg:px-10 pb-10 sm:pb-16 max-w-5xl">
       <span class="text-orange text-xs font-semibold uppercase tracking-[0.3em] mb-4">
         TV Cultura apresenta
       </span>

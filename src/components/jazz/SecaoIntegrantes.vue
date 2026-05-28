@@ -1,5 +1,5 @@
 <template>
-  <section id="integrantes" class="py-20 px-10 bg-white">
+  <section id="integrantes" class="py-12 sm:py-20 px-4 sm:px-6 lg:px-10 bg-white">
     <div class="max-w-4xl mx-auto">
 
       <h2 class="font-display text-4xl font-bold text-dark mb-2">Integrantes</h2>

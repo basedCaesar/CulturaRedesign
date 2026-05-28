@@ -1,16 +1,20 @@
 <template>
-  <section class="bg-white border-y border-cultborder px-10 py-12">
+  <section class="bg-white border-y border-cultborder px-4 sm:px-6 lg:px-10 py-12">
     <div class="flex items-baseline justify-between mb-7 pb-4 border-b-2 border-dark">
       <h2 class="section-title">Últimas Notícias</h2>
       <RouterLink to="/noticias" class="section-link">Ver todas →</RouterLink>
     </div>
 
-    <div class="grid grid-cols-4 gap-7">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
       <article
         v-for="item in noticias"
         :key="item.id"
         class="group cursor-pointer"
         @click="$router.push(`/noticias/${item.id}`)"
+        role="button"
+        tabindex="0"
+        @keydown.enter="$router.push(`/noticias/${item.id}`)"
+        :aria-label="item.titulo"
       >
         <div :class="`aspect-[3/2] rounded-md mb-3.5 bg-gradient-to-br ${item.gradient}`" />
         <p class="text-[11px] font-semibold uppercase tracking-widest text-orange mb-1.5">{{ item.categoria }}</p>

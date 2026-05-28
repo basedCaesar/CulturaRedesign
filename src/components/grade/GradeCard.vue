@@ -3,13 +3,12 @@
     :is="item.programaId ? 'RouterLink' : 'div'"
     :to="item.programaId ? `/programas/${item.programaId}` : undefined"
     :class="[
-      'group grid gap-0 bg-white border rounded-lg overflow-hidden transition-shadow',
+      'group grid gap-0 bg-white border rounded-lg overflow-hidden transition-shadow grid-cols-1 sm:grid-cols-[200px_1fr]',
       item.now
         ? 'border-orange shadow-sm shadow-orange/20'
         : 'border-cultborder hover:shadow-md',
       item.programaId ? 'cursor-pointer' : '',
     ]"
-    style="grid-template-columns: 200px 1fr;"
   >
     <!-- Thumbnail com horário -->
     <div class="relative overflow-hidden">

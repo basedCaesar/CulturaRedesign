@@ -26,14 +26,16 @@
       </div>
 
       <div class="relative flex-shrink-0 md:w-64">
+        <label for="busca-noticias" class="sr-only">Buscar notícias</label>
         <input
+          id="busca-noticias"
           v-model="busca"
           @input="page = 1"
-          type="text"
+          type="search"
           placeholder="Buscar notícias..."
           class="w-full text-sm border border-cultborder rounded-lg pl-10 pr-4 py-2.5 focus:border-teal focus:outline-none transition-colors"
         />
-        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-muted text-lg">⌕</span>
+        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-muted text-lg" aria-hidden="true">⌕</span>
       </div>
     </div>
 

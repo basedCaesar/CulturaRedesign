@@ -3,8 +3,7 @@
     :href="podcast.spotify"
     target="_blank"
     rel="noopener noreferrer"
-    class="group grid gap-0 bg-white border border-cultborder rounded-lg overflow-hidden hover:shadow-md transition-shadow"
-    style="grid-template-columns: 220px 1fr;"
+    class="group grid gap-0 bg-white border border-cultborder rounded-lg overflow-hidden hover:shadow-md transition-shadow grid-cols-1 sm:grid-cols-[220px_1fr]"
   >
     <!-- Capa -->
     <div class="relative overflow-hidden">

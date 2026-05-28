@@ -1,16 +1,20 @@
 <template>
-  <section class="bg-white px-10 py-12">
+  <section class="bg-white px-4 sm:px-6 lg:px-10 py-12">
     <div class="flex items-baseline justify-between mb-7 pb-4 border-b-2 border-dark">
       <h2 class="section-title">Destaques</h2>
       <RouterLink to="/noticias" class="section-link">Ver todos →</RouterLink>
     </div>
 
-    <div class="grid grid-cols-3 gap-7">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
       <article
         v-for="item in destaques"
         :key="item.id"
         class="group cursor-pointer"
         @click="$router.push(`/noticias/${item.id}`)"
+        role="button"
+        tabindex="0"
+        @keydown.enter="$router.push(`/noticias/${item.id}`)"
+        :aria-label="item.titulo"
       >
         <div :class="`aspect-video rounded-lg overflow-hidden mb-4 relative bg-gradient-to-br ${item.gradient}`" />
         <p class="card-category">{{ item.categoria }}</p>

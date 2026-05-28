@@ -1,11 +1,11 @@
 <template>
-  <section class="bg-dark px-10 py-12">
+  <section class="bg-dark px-4 sm:px-6 lg:px-10 py-12">
     <div class="flex items-baseline justify-between mb-7 pb-4 border-b border-white/15">
       <h2 class="font-display text-2xl font-bold text-white">Últimas da Rádio</h2>
       <a href="https://cultura.uol.com.br/radio/" target="_blank" rel="noopener noreferrer" class="text-white/50 text-xs font-semibold uppercase tracking-widest hover:text-white transition-colors">Ver todas →</a>
     </div>
 
-    <div class="grid grid-cols-4 gap-4">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
       <a
         v-for="item in radio"
         :key="item.id"

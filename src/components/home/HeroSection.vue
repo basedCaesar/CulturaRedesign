@@ -1,5 +1,5 @@
 <template>
-  <section class="grid bg-white border-b border-cultborder" style="grid-template-columns: 1fr 400px;">
+  <section class="grid bg-white border-b border-cultborder grid-cols-1 lg:grid-cols-[1fr_400px]">
 
     <div class="relative min-h-[460px] overflow-hidden cursor-pointer group" @click="$router.push(`/noticias/${hero.id}`)">
       <div :class="`absolute inset-0 bg-gradient-to-br ${hero.gradient}`" />
@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div class="border-l border-cultborder flex flex-col">
+    <div class="border-t lg:border-t-0 lg:border-l border-cultborder flex flex-col">
       <div class="px-7 py-6 border-b border-cultborder">
         <p class="text-[11px] font-semibold uppercase tracking-widest text-teal mb-1">Agora na Cultura</p>
         <p class="text-sm text-muted">{{ dataHoje }}</p>

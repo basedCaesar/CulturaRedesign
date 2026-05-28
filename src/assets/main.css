@@ -6,9 +6,18 @@
   body {
     @apply font-body bg-cream text-dark;
   }
+
+  :focus-visible {
+    outline: 2px solid #0D6D6E;
+    outline-offset: 2px;
+  }
 }
 
 @layer components {
+  .skip-to-main {
+    @apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-orange focus:text-white focus:px-4 focus:py-2 focus:rounded-md focus:text-sm focus:font-semibold focus:shadow-lg;
+  }
+
   .nav-link {
     @apply text-mid text-xs font-medium uppercase tracking-wide pb-0.5 border-b-2 border-transparent hover:text-orange transition-colors duration-200 whitespace-nowrap;
   }

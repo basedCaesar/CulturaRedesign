@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-dark py-2 px-10 flex items-center justify-between">
+  <div class="hidden sm:flex bg-dark py-2 px-4 sm:px-6 lg:px-10 items-center justify-between">
     <span class="text-white font-bold text-sm font-body">
       <span class="text-orange">30</span>uol
     </span>

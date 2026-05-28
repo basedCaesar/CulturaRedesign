@@ -1,6 +1,6 @@
 <template>
-  <footer class="bg-white border-t-4 border-orange pt-12 pb-8 px-10">
-    <div class="grid grid-cols-4 gap-12 mb-10">
+  <footer class="bg-white border-t-4 border-orange pt-12 pb-8 px-4 sm:px-6 lg:px-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-10">
 
       <div>
         <div class="flex items-center gap-3 mb-4">
@@ -53,7 +53,7 @@
 
     </div>
 
-    <div class="border-t border-cultborder pt-6 flex justify-between items-center">
+    <div class="border-t border-cultborder pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
       <p class="text-xs text-muted">© 2026 Fundação Padre Anchieta — TV Cultura. Todos os direitos reservados.</p>
       <div class="flex gap-2">
         <a v-for="s in socials" :key="s" href="#"

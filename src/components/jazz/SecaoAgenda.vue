@@ -1,5 +1,5 @@
 <template>
-  <section id="agenda" class="py-20 px-10 bg-cream">
+  <section id="agenda" class="py-12 sm:py-20 px-4 sm:px-6 lg:px-10 bg-cream">
     <div class="max-w-4xl mx-auto">
 
       <h2 class="font-display text-4xl font-bold text-dark mb-2">Agenda</h2>
