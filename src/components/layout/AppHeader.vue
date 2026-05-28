@@ -15,15 +15,21 @@
       </RouterLink>
 
       <nav class="flex items-center gap-1 flex-1 justify-center">
-        <RouterLink
-          v-for="item in navItems"
-          :key="item.label"
-          :to="item.to"
-          class="nav-link px-3 py-2"
-          :class="{ active: $route.path === item.to }"
-        >
-          {{ item.label }}
-        </RouterLink>
+        <template v-for="item in navItems" :key="item.label">
+          <a
+            v-if="item.href"
+            :href="item.href"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="nav-link px-3 py-2"
+          >{{ item.label }}</a>
+          <RouterLink
+            v-else
+            :to="item.to"
+            class="nav-link px-3 py-2"
+            :class="{ active: $route.path === item.to }"
+          >{{ item.label }}</RouterLink>
+        </template>
       </nav>
 
       <div class="flex items-center gap-3 flex-shrink-0">
@@ -58,7 +64,7 @@ const navItems = [
   { label: 'Jazz Sinfônica', to: '/jazz-sinfonica' },
   { label: 'Programas', to: '/programas' },
   { label: 'Grade', to: '/grade' },
-  { label: 'Rádio', to: '/radio' },
+  { label: 'Rádio', href: 'https://cultura.uol.com.br/radio/' },
   { label: 'Podcasts', to: '/podcasts' },
 ]
 

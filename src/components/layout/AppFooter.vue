@@ -36,8 +36,8 @@
         </ul>
         <h4 class="text-[11px] font-bold uppercase tracking-widest text-dark mb-4">Rádio</h4>
         <ul class="flex flex-col gap-3">
-          <li v-for="link in radioLinks" :key="link">
-            <a href="#" class="text-sm text-muted hover:text-teal transition-colors">{{ link }}</a>
+          <li v-for="link in radioLinks" :key="link.label">
+            <a :href="link.href" target="_blank" rel="noopener noreferrer" class="text-sm text-muted hover:text-teal transition-colors">{{ link.label }}</a>
           </li>
         </ul>
       </div>
@@ -68,7 +68,10 @@
 <script setup>
 const fundacaoLinks = ['Central de Relacionamento', 'Conselho Curador', 'Portal da Transparência', 'Canal de Ética', 'Trabalhe Conosco']
 const tvLinks = ['TV Cultura', 'TV Rá-Tim-Bum', 'Univesp TV']
-const radioLinks = ['Cultura FM', 'Cultura Brasil']
+const radioLinks = [
+  { label: 'Cultura FM', href: 'https://cultura.uol.com.br/radio/' },
+  { label: 'Cultura Brasil', href: 'https://cultura.uol.com.br/radio/' },
+]
 const programasLinks = ['Roda Viva', 'Provoca', 'Café Filosófico', 'Jazz Sinfônica', 'Jornal da Cultura', 'Podcasts']
 const socials = ['f', '𝕏', 'in', '▶']
 </script>
