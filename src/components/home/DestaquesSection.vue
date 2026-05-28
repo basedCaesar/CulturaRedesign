@@ -12,11 +12,7 @@
         class="group cursor-pointer"
         @click="$router.push(`/noticias/${item.id}`)"
       >
-        <div :class="`aspect-video rounded-lg overflow-hidden mb-4 relative bg-gradient-to-br ${item.gradient}`">
-          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/35">
-            <div class="w-12 h-12 rounded-full bg-white/95 flex items-center justify-center text-lg">▶</div>
-          </div>
-        </div>
+        <div :class="`aspect-video rounded-lg overflow-hidden mb-4 relative bg-gradient-to-br ${item.gradient}`" />
         <p class="card-category">{{ item.categoria }}</p>
         <h3 class="card-title mb-2 group-hover:text-teal transition-colors">{{ item.titulo }}</h3>
         <span class="text-xs text-muted">{{ item.tempo }}</span>
